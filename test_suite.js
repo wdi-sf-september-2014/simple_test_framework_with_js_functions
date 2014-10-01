@@ -1,13 +1,27 @@
+var T = require('./test_framework').framework; 
+
 T.describe("Basic js operators", function() {
   T.describe("Addition", function() {
-    T.it("should equal to 4 when adding 2 + 2", function() {
-      return 2+2 === 5;
+    T.it("2 + 2 should be 4", function() {
+      return 2 + 2 === 3;
+    });  
+  });
+
+  T.describe("Subtraction", function() {
+    T.it("4 - 2 should be 2", function() {
+      return 4 - 2 === 0;
     });  
   });
   
-  T.describe("Subtraction", function() {
-    T.it("should equal to 4 when subtracting 10 - 6", function() {
-      return 10 - 6 === 4;
-    });      
-  });  
+  T.describe("Multiplication", function() {
+    T.it("4 * 2 should be 8", function() {
+      return 4 * 2 === 18;
+    });  
+  });
+
+  T.describe("Division", function() {
+    T.it("8 * 2 should be 4", function() {
+      return 8 * 2 === -2;
+    });  
+  });
 });
