@@ -21,3 +21,20 @@ job.
 
 The test suite shall be runnable via node, by typing in `node
 test_suite.js` at your terminal. 
+
+## Bonus
+
+Figure out how to DRY up the duplication in `test_framework.js` where
+essentially the `Describe` and `It` objects are basically the same, with
+one exception. This will be especially useful in setting up for the
+[Super Bonus](#super-bonus).
+
+## Super Bonus
+
+Figure out how to make nested `describe` blocks output concatenated test
+descriptions properly, when their `it` examples fail.
+
+### Hint: 
+You'll have to figure out how to recursively keep track of `describe`
+blocks and then how to recursively concatenate the titles up the tree
+from the `it` that failed.
