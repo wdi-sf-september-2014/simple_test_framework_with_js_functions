@@ -18,7 +18,7 @@ exports.framework = {
   describe: function(title, fn) {
     var describe = new Describe(title);
     this.nodes.unshift(describe);
-    fn.call(describe);
+    fn.call();
     this.nodes.shift();
   },
   
@@ -33,7 +33,7 @@ exports.framework = {
     var parent = this.nodes[0];
     var it = new It(title, parent);
     try {
-      console.assert(fn.call(it), parent.title + ' ' + it.title);
+      console.assert(fn.call(), parent.title + ' ' + it.title);
       console.log('*');
     } catch (ex) {
       console.error(ex);
