@@ -1,5 +1,15 @@
-var Describe = function(title) {
+var Describe = function(title, parent) {
   this.title = title;
+  this.parent = parent;
+};
+
+Describe.prototype.fullTitle = function() {
+  console.log(this);
+  if (this.parent) {
+    var full = this.parent.fullTitle();
+    if (full) return full + ' ' + this.title;
+  }
+  return this.title;
 };
 
 var It = function(title, parent) {
@@ -18,7 +28,7 @@ exports.framework = {
   describe: function(title, fn) {
     var describe = new Describe(title);
     this.nodes.unshift(describe);
-    fn.call();
+    fn.call(describe);
     this.nodes.shift();
   },
   
@@ -33,7 +43,7 @@ exports.framework = {
     var parent = this.nodes[0];
     var it = new It(title, parent);
     try {
-      console.assert(fn.call(), parent.title + ' ' + it.title);
+      console.assert(fn.call(), parent.fullTitle + ' ' + it.title);
       console.log('*');
     } catch (ex) {
       console.error(ex);
