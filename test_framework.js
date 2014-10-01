@@ -1,20 +1,19 @@
-var Describe = function(title, parent) {
+/**
+ * A Node represents a describe or an it
+ * @param {string} title - title of this test suite node
+ * @param {Node} parent - parent of this node (null if root node)
+ */
+var Node = function(title, parent) {
   this.title = title;
   this.parent = parent;
 };
 
-Describe.prototype.fullTitle = function() {
-  console.log(this);
+Node.prototype.fullTitle = function() {
   if (this.parent) {
     var full = this.parent.fullTitle();
     if (full) return full + ' ' + this.title;
   }
   return this.title;
-};
-
-var It = function(title, parent) {
-  this.title = title;
-  this.parent = parent;
 };
 
 exports.framework = {
@@ -26,9 +25,10 @@ exports.framework = {
    * @param {Function} fn - function for nested it examples
    */
   describe: function(title, fn) {
-    var describe = new Describe(title);
-    this.nodes.unshift(describe);
-    fn.call(describe);
+    var parent = this.nodes[0];
+    var node = new Node(title, parent);
+    this.nodes.unshift(node);
+    fn.call();
     this.nodes.shift();
   },
   
@@ -41,9 +41,9 @@ exports.framework = {
    */
   it: function(title, fn) {
     var parent = this.nodes[0];
-    var it = new It(title, parent);
+    var node = new Node(title, parent);
     try {
-      console.assert(fn.call(), parent.fullTitle + ' ' + it.title);
+      console.assert(fn.call(), node.fullTitle());
       console.log('*');
     } catch (ex) {
       console.error(ex);
