@@ -1,7 +1,10 @@
 var Describe = function(title) {
+  this.title= title;
 };
 
 var It = function(title, parent) {
+  this.title =title;
+  this.parent = parent;
 };
 
 exports.framework = {
@@ -12,7 +15,11 @@ exports.framework = {
    * @param {string} title - title of this describe
    * @param {Function} fn - function for nested it examples
    */
+
   describe: function(title, fn) {
+    console.log(title);
+    fn.call();
+    
   },
   
   /**
@@ -23,6 +30,11 @@ exports.framework = {
    * @param {Function} fn - function for the example
    */
   it: function(title, fn) {
+    if (fn.call()) {
+      console.log("*");
+    } else {
+      console.log(title + " failed");
+    }
   }
   
 };
