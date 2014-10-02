@@ -46,7 +46,7 @@ exports.framework = {
       console.assert(fn.call(), node.fullTitle());
       console.log('*');
     } catch (ex) {
-      console.error(ex);
+      console.log(ex.message);
     } 
   }
   
