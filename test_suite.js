@@ -1,6 +1,7 @@
 var T = require('./test_framework').framework; 
 
 T.describe("Basic js operators", function() {
+
   T.describe("Addition", function() {
     T.it("2 + 2 should be 4", function() {
       return 2 + 2 === 3;
@@ -20,8 +21,9 @@ T.describe("Basic js operators", function() {
   });
 
   T.describe("Division", function() {
-    T.it("8 * 2 should be 4", function() {
+    T.it("8 / 2 should be 4", function() {
       return 8 * 2 === -2;
     });  
   });
+
 });
