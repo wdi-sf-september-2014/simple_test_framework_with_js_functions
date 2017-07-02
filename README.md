@@ -15,7 +15,7 @@ built-in operators.
 The same simplistic test framework that you will write tonight, may be
 used to run other test suites, that follow the same patterns.
 
-The framework takes inspiration from [mocha](http://visionmedia.github.io/mocha/) and [jasmine](http://jasmine.github.io/2.0/introduction.html) for the structure
+The framework takes inspiration from [mocha](http://mochajs.org/) and [jasmine](http://jasmine.github.io/2.0/introduction.html) for the structure
 of the functions that you need to define for the framework to do its
 job.
 
